@@ -1,0 +1,9 @@
+<h2>My Books: {{ books.length }}</h2>
+<ul class="books">
+  <li *ngFor="let book of books">
+    <span class="badge">{{book.title}}</span> {{book.category}}
+    <p>
+        {{book.description}}
+    </p>
+  </li>
+</ul>

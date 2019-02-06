@@ -4,10 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookComponent }   from './books/book.component';
 import { BookListComponent }   from './books/book-list.component';
  
-const routes: Routes = [
-  { path: '', redirectTo: '/book', pathMatch: 'full' },
-  { path: '/book', component: BookComponent },
-  { path: '/book-list', component: BookListComponent }
+export const routes: Routes = [
+  { path: '', redirectTo: 'book', pathMatch: 'full' },
+  { path: 'book', component: BookComponent },
+  { path: 'book-list', component: BookListComponent }
 ];
  
 @NgModule({
