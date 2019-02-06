@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Book, Category } from './book';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BookService } from './book.service';
+import { Category } from './book';
 
 @Component({
   selector: 'books-app',
-  templateUrl: './book.component.html'
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.css']
 })
 
 export class BookComponent {
-  book: Book = {
-    title: "Talking with Tech Leads",
-    category: Category.Drama,
-    description: "A good read"
-  }
+  books = [];
+  categoryValues = ["Comedy", "Drama", "Sport"];
 
   bookForm = new FormGroup({
-    title: new FormControl(this.book.title),
-    category: new FormControl(this.book.category),
-    description: new FormControl(this.book.description)
+    title: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required)
   });
 
-  onSubmit() {
-    console.warn(this.bookForm.value);
+  constructor(private bookService: BookService) { }
+
+  submit() {
+    this.bookService.add(this.bookForm.value);
+    this.bookForm.reset();
   }
 }

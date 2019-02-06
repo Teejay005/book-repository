@@ -1,36 +1,57 @@
 import { TestBed, async } from '@angular/core/testing';
 import { BookComponent } from './book.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Book } from './book';
+import { BookService } from './book.service';
 
-describe('AppComponent', () => {
+describe('BookComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [
         BookComponent
       ],
+      providers: [BookService]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  it('should create the Book Component', () => {
     const fixture = TestBed.createComponent(BookComponent);
     const bookComponent = fixture.debugElement.componentInstance;
     expect(bookComponent).toBeTruthy();
   });
 
-  it(`should have a book object`, () => {
+ 
+  it('form invalid when empty', () => {
     const fixture = TestBed.createComponent(BookComponent);
-    console.log(fixture.debugElement.componentInstance)
     const bookComponent = fixture.debugElement.componentInstance;
-    expect(bookComponent.book.title).toEqual('Talking with Tech Leads');
-    expect(bookComponent.book.category.toString()).toEqual('Drama');
-    expect(bookComponent.book.description).toEqual('A good read');
+    expect(bookComponent.bookForm.valid).toBeFalsy();
+
+    let title = bookComponent.bookForm.controls['title'];
+    expect(title.valid).toBeFalsy();
+
+    let description = bookComponent.bookForm.controls['description'];
+    expect(title.valid).toBeFalsy();
+
+    let category = bookComponent.bookForm.controls['category'];
+    expect(title.valid).toBeFalsy();
   });
 
-//   it('should render title in a h1 tag', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     fixture.detectChanges();
-//     const compiled = fixture.debugElement.nativeElement;
-//     expect(compiled.querySelector('h1').textContent).toContain('Welcome to book-repository!');
-//   });
+  it('submitting a form emits a Books', () => {
+    let bookService = TestBed.get(BookService);
+    const fixture = TestBed.createComponent(BookComponent);
+    const bookComponent = fixture.debugElement.componentInstance;
+    
+    expect(bookComponent.bookForm.valid).toBeFalsy();
+    bookComponent.bookForm.controls['title'].setValue("Shakespare");
+    bookComponent.bookForm.controls['description'].setValue("A wonderful book");
+    bookComponent.bookForm.controls['category'].setValue("Drama");
+    expect(bookComponent.bookForm.valid).toBeTruthy();
+
+    bookComponent.submit();
+
+    expect(bookService.getBooks()[0].title).toBe("Shakespare");
+    expect(bookService.getBooks()[0].category).toBe("Drama");
+    expect(bookService.getBooks()[0].description).toBe("A wonderful book");
+  });
 });
