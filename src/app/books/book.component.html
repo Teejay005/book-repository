@@ -1,0 +1,16 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <label>
+    Title:
+    <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    Category:
+    <input type="text" formControlName="category">
+  </label>
+
+  <label>
+    Description:
+    <input type="text" formControlName="description">
+  </label>
+</form>
