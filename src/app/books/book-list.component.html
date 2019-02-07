@@ -1,9 +1,12 @@
-<h2>My Books: {{ books.length }}</h2>
-<ul class="books">
-  <li *ngFor="let book of books">
-    <span class="badge">{{book.title}}</span> {{book.category}}
+<h2>Book List: {{ books.length }}</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let book of books"><span class="badge">Title: {{book.title}}</span> {{book.category}}
     <p>
-        {{book.description}}
+      Description: {{book.description}}
     </p>
   </li>
 </ul>
+
+<nav>
+  <a routerLink="/book">Add</a>
+</nav>

@@ -1,23 +1,26 @@
 <h2>Add Book</h2>
-{{categoryValues}}
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-  <label>
-    Title:
-    <input type="text" formControlName="title" placeholder="Title">
-  </label>
 
-  <select formControlName="category">
-    <option [value]="category" *ngFor="let category of categoryValues"> {{category}}</option>
-  </select>
-
-  <label>
-    Category:
-    <input type="text" formControlName="description" placeholder="Description">
-  </label>
-
-  <button type="submit" [disabled]="!bookForm.valid">Submit</button>
+<form [formGroup]="bookForm" (ngSubmit)="submit()" class="book-container">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="email" class="form-control" formControlName="title" placeholder="Title" id="title">
+  </div>
+  
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select class="form-control" formControlName="category" id="category">
+      <option [value]="category" *ngFor="let category of categoryValues"> {{category}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" formControlName="description" placeholder="Description" rows="3"></textarea>
+  </div>
+  <button type="submit" [disabled]="!bookForm.valid" class="btn btn-primary">Add</button>
 </form>
 
-<nav>
-  <a routerLink="/book-list">List of Books</a>
-</nav>
+<div class="list-group">
+  <a routerLink="/book-list" class="list-group-item list-group-item-action">
+    List of Books
+  </a>
+</div>

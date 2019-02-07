@@ -14,7 +14,7 @@ export class BookComponent {
 
   bookForm = new FormGroup({
     title: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
+    category: new FormControl('Comedy', Validators.required),
     description: new FormControl('', Validators.required)
   });
 
