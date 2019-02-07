@@ -32,9 +32,4 @@ describe('Book Repository App', () => {
 
     page.addBook();
   });
-
-  it('Should show book saved when Book List link is clicked', () => {
-    booklistPage = page.clickButtonToGoToBookListPage();
-    expect(booklistPage.bookCountText.getText()).toBe('Book List: 1');
-  });
 });
