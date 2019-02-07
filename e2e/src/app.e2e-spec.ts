@@ -28,7 +28,6 @@ describe('Book Repository App', () => {
 
   it('Should Add book to booklist', () => {
     page.setTitle("Things fall apart");
-    page.setCategory("Drama");
     page.setDescription("Things fall apart");
 
     page.addBook();
@@ -36,10 +35,6 @@ describe('Book Repository App', () => {
 
   it('Should show book saved when Book List link is clicked', () => {
     booklistPage = page.clickButtonToGoToBookListPage();
-
-    console.log(booklistPage.bookCountText.getText());
-
-    // console.log(booklistPage.listOfBooks.getText());
-    // expect(booklistPage.listOfBooks.count).toBe(1);
+    expect(booklistPage.bookCountText.getText()).toBe('Book List: 1');
   });
 });

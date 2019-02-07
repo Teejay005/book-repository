@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BookService } from './book.service';
+import { Category } from './book';
 
 @Component({
   selector: 'books-app',
@@ -10,7 +11,7 @@ import { BookService } from './book.service';
 
 export class BookComponent {
   books = [];
-  categoryValues = ["Comedy", "Drama", "Sport"];
+  categoryValues = Category;
 
   bookForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(30)]),

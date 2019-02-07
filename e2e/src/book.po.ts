@@ -7,7 +7,7 @@ export class BookPage {
   descriptionInput = element(by.id('description'));
   addButton = element(by.id('addButton'));
 
-  goToBooKListPageButton = element(by.css('.list-group-item'));
+  goToBooKListPageButton = element(by.css('.list-group .list-group-item'));
 
   get() {
     browser.get('/');
