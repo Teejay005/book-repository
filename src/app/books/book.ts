@@ -1,7 +1,7 @@
 export enum Category {
     Drama = "Drama",
-    Comedy = "Drama",
-    Sport = "Drama"
+    Comedy = "Comedy",
+    Sport = "Sport"
 }
 
 export class Book {

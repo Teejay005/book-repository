@@ -1,8 +1,6 @@
-
-
 import { browser, by, element } from 'protractor';
-import {  } from './book.po';
 
-export class BookPage {
-  listOfBooks  = element.all(by.css('.selector'));
+export class BookListPage {
+  bookCountText = element(by.css('h2'));;
+  listOfBooks  = element.all(by.css('.list-group-item'));
 };
