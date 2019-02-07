@@ -1,14 +1,36 @@
 import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('Protractor Demo App', function() {
+  var firstNumber = element(by.binding('title'));
+  var secondNumber = element(by.binding('category'));
+  var goButton = element(by.binding('description'));
+  var latestResult = element(by.binding('latest'));
 
-  beforeEach(() => {
-    page = new AppPage();
+  beforeEach(function() {
+    browser.get('http://juliemr.github.io/protractor-demo/');
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to book-repository!');
+  it('should have a title', function() {
+    expect(browser.getTitle()).toEqual('Super Calculator');
+  });
+
+  it('should add one and two', function() {
+    firstNumber.sendKeys(1);
+    secondNumber.sendKeys(2);
+
+    goButton.click();
+
+    expect(latestResult.getText()).toEqual('3');
+  });
+
+  it('should add four and six', function() {
+    // Fill this in.
+    expect(latestResult.getText()).toEqual('10');
+  });
+
+  it('should read the value from an input', function() {
+    firstNumber.sendKeys(1);
+    expect(firstNumber.getAttribute('value')).toEqual('1');
   });
 });

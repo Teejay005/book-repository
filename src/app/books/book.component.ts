@@ -13,7 +13,7 @@ export class BookComponent {
   categoryValues = ["Comedy", "Drama", "Sport"];
 
   bookForm = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
     category: new FormControl('Comedy', Validators.required),
     description: new FormControl('', Validators.required)
   });

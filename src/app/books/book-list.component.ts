@@ -3,7 +3,8 @@ import { BookService } from './book.service';
 
 @Component({
   selector: 'books-list-app',
-  templateUrl: './book-list.component.html'
+  templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.css']
 })
 
 export class BookListComponent implements OnInit {
