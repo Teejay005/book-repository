@@ -11,7 +11,7 @@ import { Category } from './book';
 
 export class BookComponent {
   books = [];
-  categoryValues = Category;
+  categoryValues = [Category.Comedy, Category.Drama, Category.Sport];
 
   bookForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.maxLength(30)]),
